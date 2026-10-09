@@ -1,0 +1,22 @@
+{
+  "name": "@asuforce/tintwork",
+  "version": "0.1.0",
+  "description": "Design tokens, base styles and web fonts shared across asuforce sites",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asuforce/tintwork.git"
+  },
+  "files": [
+    "tokens.css",
+    "base.css",
+    "fonts.css",
+    "fonts"
+  ],
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./base.css": "./base.css",
+    "./fonts.css": "./fonts.css",
+    "./fonts/*": "./fonts/*"
+  }
+}
