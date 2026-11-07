@@ -15,7 +15,7 @@ tintwork/
 Vite or Astro, from a git tag:
 
 ```sh
-npm install github:Asuforce/tintwork#v0.1.0
+npm install github:Asuforce/tintwork#v0.1.1
 ```
 
 ```js
@@ -64,3 +64,35 @@ D-DIN has the reserved font name "D-DIN". Do not convert, subset or rename the f
 The CSS is MIT (see `LICENSE`). The fonts keep their own licenses, found in `fonts/<family>/OFL.txt`.
 
 See `docs/DESIGN.md` for the design notes (Japanese).
+
+## Optional navigation
+
+Import `@asuforce/tintwork/components/navigation.css` after tokens and base.
+Existing sites are unaffected until they add the classes.
+
+```text
+tintwork: surface → items → link states
+site:     position → breakpoint → current section → animation
+```
+
+```html
+<nav class="tw-nav tw-nav--clear" aria-label="Main">
+  <ul class="tw-nav__items">
+    <li><a class="tw-nav__link" href="/" aria-current="page">Home</a></li>
+    <li><a class="tw-nav__link" href="/settings">Settings</a></li>
+  </ul>
+</nav>
+```
+
+Use `tw-nav--column` for vertical navigation or `tw-nav--bottom` for a
+horizontal bottom bar. These modifiers do not set fixed positioning or
+breakpoints. The site owns responsive layout, safe-area insets, content
+clearance, theme selection and `aria-current` updates (`page` for routes,
+`location` for sections; omit it on other links).
+
+The optional stylesheet defines `--nav-*` surface and state tokens for dark
+and light themes. Current links use the existing accent text token; hover
+uses blue and keyboard focus uses `--focus`. Clear surfaces fall back to an
+opaque background without backdrop filtering. Override tokens on the nav
+when a site needs another surface. Keep long labels readable by selecting
+an appropriate layout rather than shrinking them.
