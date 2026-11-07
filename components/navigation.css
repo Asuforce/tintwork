@@ -1,0 +1,81 @@
+/* Optional navigation primitives. Import after tokens.css and base.css. */
+:root {
+  --nav-surface: #101820;
+  --nav-clear-surface: rgba(16, 24, 32, 0.82);
+  --nav-border: rgba(190, 210, 225, 0.2);
+  --nav-hover: #a1ccf2;
+  --nav-hover-surface: rgba(161, 204, 242, 0.08);
+  --nav-current: var(--accent-text);
+  --nav-current-surface: rgba(192, 254, 4, 0.08);
+}
+:root[data-theme="light"] {
+  --nav-surface: #f5f4f0;
+  --nav-clear-surface: rgba(245, 244, 240, 0.86);
+  --nav-border: rgba(45, 65, 80, 0.2);
+  --nav-hover: #1b568b;
+  --nav-hover-surface: rgba(27, 86, 139, 0.06);
+  --nav-current-surface: rgba(74, 104, 0, 0.08);
+}
+.tw-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  color: var(--text);
+  background: var(--nav-surface);
+  border: 1px solid var(--nav-border);
+  border-radius: 12px;
+  font-family: var(--font);
+}
+/* The opaque surface remains usable when backdrop filtering is unavailable. */
+@supports (backdrop-filter: blur(16px)) {
+  .tw-nav--clear {
+    background: var(--nav-clear-surface);
+    backdrop-filter: blur(16px);
+  }
+}
+.tw-nav__items {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+.tw-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: inherit;
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: color 150ms var(--ease), background-color 150ms var(--ease);
+}
+.tw-nav__link:hover {
+  color: var(--nav-hover);
+  background: var(--nav-hover-surface);
+}
+.tw-nav__link[aria-current]:not([aria-current="false"]) {
+  color: var(--nav-current);
+  background: var(--nav-current-surface);
+}
+.tw-nav__link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+.tw-nav--column { align-items: stretch; flex-direction: column; }
+.tw-nav--column .tw-nav__items { align-items: stretch; flex-direction: column; }
+.tw-nav--column .tw-nav__items > li { width: 100%; }
+/* Use for a bottom bar; the app owns positioning and content clearance. */
+.tw-nav--bottom .tw-nav__items { flex: 1; justify-content: space-around; }
+.tw-nav--bottom .tw-nav__items > li { flex: 1; min-width: 0; }
+.tw-nav--bottom .tw-nav__link { justify-content: center; padding-inline: 8px; }
+@media (prefers-reduced-motion: reduce) {
+  .tw-nav__link { transition: none; }
+}

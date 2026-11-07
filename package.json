@@ -1,6 +1,6 @@
 {
   "name": "@asuforce/tintwork",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Design tokens, base styles and web fonts shared across asuforce sites",
   "license": "MIT",
   "repository": {
@@ -11,12 +11,14 @@
     "tokens.css",
     "base.css",
     "fonts.css",
-    "fonts"
+    "fonts",
+    "components"
   ],
   "exports": {
     "./tokens.css": "./tokens.css",
     "./base.css": "./base.css",
     "./fonts.css": "./fonts.css",
-    "./fonts/*": "./fonts/*"
+    "./fonts/*": "./fonts/*",
+    "./components/navigation.css": "./components/navigation.css"
   }
 }
